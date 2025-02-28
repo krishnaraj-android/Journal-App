@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/journal")
+@RequestMapping("/_journal")
 public class JournalEntryController {
 
-    private Map<Long,JournalEntry> entries=new HashMap<>();
+    private Map<String, JournalEntry> entries=new HashMap<>();
 
     @GetMapping
     public List<JournalEntry> getAll(){
@@ -23,7 +23,7 @@ public class JournalEntryController {
 
     @PostMapping
     public boolean createEntry(@RequestBody JournalEntry myEntry){
-        entries.put((long) myEntry.getId(),myEntry);
+        entries.put(myEntry.getId(),myEntry);
         return true;
 
     }
@@ -33,7 +33,7 @@ public class JournalEntryController {
     }
 
    @PutMapping("id/{id}")
-   public JournalEntry updateJournalEntryNyId(@PathVariable long id,@RequestBody JournalEntry myEntry){
+   public JournalEntry updateJournalEntryNyId(@PathVariable String id, @RequestBody JournalEntry myEntry){
         return entries.put(id,myEntry);
    }
 }

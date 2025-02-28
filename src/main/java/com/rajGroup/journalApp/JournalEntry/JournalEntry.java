@@ -1,10 +1,28 @@
 package com.rajGroup.journalApp.JournalEntry;
-//pojo class
-public class JournalEntry {
-    long id;
-    String title;
-    String content;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+
+//pojo class
+@Document(collection = "journal_entries")   //ORM -->object relational mapping--> db se
+public class JournalEntry {
+
+    @Id
+    private String id;
+    private String title;
+    private String content;
+    private Date date;
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getContent() {
         return content;
@@ -22,12 +40,12 @@ public class JournalEntry {
         this.title = title;
     }
 
-    public int getId() {
-        return (int) id;
+
+    public Date getDate() {
+        return date;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDate(Date date) {
+        this.date = date;
     }
-
 }
