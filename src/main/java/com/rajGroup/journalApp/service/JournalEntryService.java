@@ -19,7 +19,7 @@ public class JournalEntryService {
     }
 
     public List<JournalEntry> getAll(){
-       return jopurnalEntryRepository.findAll();
+        return jopurnalEntryRepository.findAll();
     }
 
     public Optional<JournalEntry> findByID(ObjectId id){
